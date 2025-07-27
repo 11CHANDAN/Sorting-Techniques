@@ -33,6 +33,7 @@ public class QuickSort {
 				swap(arr, i, j);
 			}
 		}
+		// j is a correct position of the pivot so we exchange low with j after rearranging elements
 		swap(arr,low,j);
 		return j;
 	}

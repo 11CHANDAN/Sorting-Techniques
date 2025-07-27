@@ -22,33 +22,37 @@ public class MergeSort {
 	}
 	
 	private static void merge(int[] arr,int low,int mid,int high) {
-		int[] temp = new int[high-low+1];
+		int n1 = mid-low+1;
+		int n2 = high-mid;
 		
-		for(int i=0;i<temp.length;i++) {
-			temp[i] = arr[i+low];
+		int[] L = new int[n1];
+		int[] R = new int[n2];
+		
+		for(int i=0;i<n1;i++) {
+			L[i] = arr[low+i];
 		}
 		
-		int left = 0;
-		int right=mid-low+1;
+		for(int j=0;j<n2;j++) {
+			R[j] = arr[mid+1+j];
+		}
+		
+		int i = 0, j = 0;
 		int k = low;
 		
-		int leftEnd = mid - low;
-		int rightEnd = high - low;
-		
-		while(left <= leftEnd && right <= rightEnd) {
-			if(temp[left]<=temp[right]) {
-				arr[k++] = temp[left++];
+		while(i<n1 && j<n2) {
+			if(L[i]<R[j]) {
+				arr[k++] = L[i++];
 			}else {
-				arr[k++] = temp[right++];
+				arr[k++] = R[j++];
 			}
 		}
 		
-		while(left <= leftEnd) {
-			arr[k++] = temp[left++];
+		while(i<n1) {
+			arr[k++] = L[i++];	
 		}
 		
-		while(right <= rightEnd) {
-			arr[k++] = temp[right++];
+		while(j<n2) {
+			arr[k++] = R[j++];
 		}
 		
 	}
